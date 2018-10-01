@@ -31,7 +31,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
   //   console.log(result);
   // });
 
-
   //findOneAndDelete
   db.collection('Users').findOneAndDelete({_id: ObjectID('5bb01a44ae35f74c655a06c8')}).then((result) => {
     console.log(result);
