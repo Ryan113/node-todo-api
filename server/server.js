@@ -6,9 +6,8 @@ const {mongoose} = require('./db/mongoose');
 const {Todo} = require('./models/todo');
 const {User} = require('./models/user');
 
-
-
 var app = express();
+const port = process.env.PORT || 3000;
 
 // lecture 73
 app.use(bodyParser.json());
@@ -35,7 +34,6 @@ app.get('/todos', (req, res) => {
   });
 });
 
-// GET /todos/12312312
 app.get('/todos/:id', (req, res) => {
   var id = req.params.id;
 
@@ -47,14 +45,14 @@ app.get('/todos/:id', (req, res) => {
     if (!todo) {
       return res.status(404).send();
     }
-    res.send(todo);
+    res.send({todo});
   }).catch((e) => {
     res.status(404).send();
   });
 });
 
-app.listen(3000, () => {
-  console.log('started on port 3000');
+app.listen(port, () => {
+  console.log('started on port: ' + port);
 });
 
 module.exports = {app};
