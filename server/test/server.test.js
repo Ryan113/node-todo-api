@@ -1,5 +1,5 @@
-const supertest = request('supertest');
-const expect = request('supertest');
+const supertest = require('supertest');
+const expect = require('supertest');
 
 const {Todo} = require('./../models/todo');
 const {app} = require('./../server');
@@ -14,7 +14,7 @@ describe('POST /todos', () => {
     .expect(200)
     .expect((res) => {
       expect(res.body.text).toBe(text);
-    });
+    })
     .end((err, res) => {
       if (err) {
         return done(err);
